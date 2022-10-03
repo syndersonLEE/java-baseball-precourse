@@ -3,8 +3,6 @@ package baseball.domain;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import baseball.utility.InputValidation;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -52,13 +50,5 @@ public class Board {
 		return gameResult;
 	}
 
-	public int showComputer() {
-		int value = 0;
-		for(Ball b : this.board) {
-			value *= 10;
-			value += b.getNumber();
-		}
-		return value;
-	}
 
 }

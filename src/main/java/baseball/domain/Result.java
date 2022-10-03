@@ -18,15 +18,23 @@ public class Result {
 		updateResult();
 		StringBuilder outputString = new StringBuilder();
 		if(ball > 0) {
-			outputString.append(ball + "볼 ");
+			outputString.append(ball + "볼");
 		}
 		if(strike > 0) {
+			outputString = appendBlank(outputString);
 			outputString.append(strike + "스트라이크");
 		}
 		if(ball == 0 && strike == 0) {
-			outputString.append("낫씽");
+			outputString.append("낫싱");
 		}
 		return outputString.toString();
+	}
+
+	public StringBuilder appendBlank(StringBuilder outputString) {
+		if(outputString.length() != 0) {
+			outputString.append(" ");
+		}
+		return outputString;
 	}
 
 	public void updateResult() {

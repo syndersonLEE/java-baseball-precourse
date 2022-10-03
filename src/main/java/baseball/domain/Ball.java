@@ -6,7 +6,7 @@ public class Ball {
 	private int number;
 	private int position;
 
-	Ball(int number, int position) {
+	public Ball(int number, int position) {
 		this.number = number;
 		this.position = position;
 	}
@@ -31,8 +31,5 @@ public class Ball {
 		return Status.NOTHING;
 	}
 
-	public int getNumber() {
-		return number;
-	}
 }
 
