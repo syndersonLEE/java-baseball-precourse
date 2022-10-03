@@ -30,5 +30,9 @@ public class Ball {
 		}
 		return Status.NOTHING;
 	}
+
+	public int getNumber() {
+		return number;
+	}
 }
 

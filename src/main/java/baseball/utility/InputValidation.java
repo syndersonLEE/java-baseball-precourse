@@ -1,17 +1,16 @@
 package baseball.utility;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class InputValidation {
-	private static int MAX_NUMBER = 9;
-	private static int MIN_NUMBER = 1;
 	private static int NUMBER_LENGTH = 3;
 
 	public static void validIntegerFormat(String inputString) {
 		try {
 			validStringLength(inputString);
-			for(int i = 0; i < inputString.length(); i++) {
-				Integer inputNumber = Integer.parseInt(inputString);
-				validNumber(inputNumber);
-			}
+			validSameNumber(Integer.parseInt(inputString));
+			Integer.parseInt(inputString);
 		} catch (RuntimeException e) {
 			throw new IllegalArgumentException();
 		}
@@ -21,10 +20,17 @@ public class InputValidation {
 			throw new IllegalArgumentException();
 		}
 	}
-	public static void validNumber(int inputNumber) {
-		if(MIN_NUMBER > inputNumber && MAX_NUMBER < inputNumber) {
+
+	public static void validSameNumber(int inputNumber) {
+		Set<Integer> numberSet = new HashSet<>();
+		int calculateNumber = inputNumber;
+		while(calculateNumber != 0) {
+			numberSet.add(calculateNumber % 10);
+			calculateNumber /= 10;
+		}
+
+		if(numberSet.size() != NUMBER_LENGTH) {
 			throw new IllegalArgumentException();
 		}
 	}
-
 }

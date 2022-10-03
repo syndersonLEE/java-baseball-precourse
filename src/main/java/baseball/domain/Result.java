@@ -5,11 +5,44 @@ import java.util.List;
 
 public class Result {
 	private List<Status> result = new ArrayList<>();
+	private int strike = 0;
+	private int ball = 0;
 
 	public Result(){}
 
 	public void addResult(Status gameResult) {
 		this.result.add(gameResult);
 	}
+
+	public String getResultString() {
+		updateResult();
+		StringBuilder outputString = new StringBuilder();
+		if(ball > 0) {
+			outputString.append(ball + "볼 ");
+		}
+		if(strike > 0) {
+			outputString.append(strike + "스트라이크");
+		}
+		if(ball == 0 && strike == 0) {
+			outputString.append("낫씽");
+		}
+		return outputString.toString();
+	}
+
+	public void updateResult() {
+		for(Status status : result) {
+			addCount(status);
+		}
+	}
+
+	void addCount(Status status) {
+		if(status == Status.STRIKE) {
+			strike++;
+		}
+		if(status == Status.BALL) {
+			ball++;
+		}
+	}
+
 
 }
